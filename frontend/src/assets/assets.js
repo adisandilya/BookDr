@@ -296,4 +296,18 @@ export const doctors = [
             line2: 'Circle, Ring Road, London'
         }
     },
+    {
+        _id: 'doc3',
+        name: 'Dr. Aditya sandilya',
+        image: doc3,
+        speciality: 'Gastroenterologist',
+        degree: 'MBBS',
+        experience: '7 Years',
+        about: 'Dr. Aditya Sandilya has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
+        fees: 500,
+        address: {
+            line1: '124, sunlight colony',
+            line2: 'Ashram, Delhi, India'
+        }
+    },
 ]
