@@ -13,6 +13,7 @@ import Navbar from './components/Navbar'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from './components/Footer'
+import PrivacyPolicy from './pages/privacyPolicy'
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
         <Route path='/my-appointments' element={<MyAppointments />}/>
         <Route path='/appointment' element={<Appointment />}/>
         <Route path='/appointment/:docId' element={<Appointment />}/>
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
       <Footer />
     </div>
