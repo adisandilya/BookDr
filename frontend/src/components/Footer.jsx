@@ -1,5 +1,5 @@
 import React from 'react'
-import { assets } from './assets'
+import { assets } from '../assets/assets'
 
 const Footer = () => {
   return (
@@ -8,7 +8,7 @@ const Footer = () => {
         {/* left section */}
         <div>
             <img className='mb-5 w-40' src={assets.logo} alt="" />
-            <p className='w-full md:w-2/3 text-gray-600 leading-6'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione qui culpa, corrupti veniam nobis omnis sed nesciunt soluta itaque eum?</p>
+            <p className='w-full md:w-2/3 text-gray-600 leading-6'>BookDr is an AI-powered web app that simplifies healthcare by helping patients effortlessly find, book, and consult doctors with smart assistant bots for instant support and seamless scheduling.</p>
         </div>
 
         {/* Center section */}
