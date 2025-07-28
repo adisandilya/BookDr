@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState ,useEffect} from "react";
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
@@ -13,6 +13,14 @@ const AdminContextProvider = (props) => {
     const [dashData, setDashData] = useState(false)
 
     const backendUrl = import.meta.env.VITE_BACKEND_URL
+
+
+    useEffect(() => {
+        const storedToken = localStorage.getItem('aToken');
+        if (storedToken) {
+          setAToken(storedToken);
+        }
+      }, []);
 
     const getAllDoctors = async () => {
         try {
