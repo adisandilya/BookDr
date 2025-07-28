@@ -18,9 +18,9 @@ const Topdoctors = () => {
             className='border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:-translate-y-1 transition-all duration-300'>
             <img className='bg-blue-50 w-full h-48 object-cover' src={item.image} alt="" />
             <div className='p-4 text-center'>
-              <div className='flex items-center justify-center gap-2 text-sm text-green-500 mb-2'>
-                <div className='w-2 h-2 bg-green-500 rounded-full'></div>
-                <p>Available</p>
+              <div className={`flex items-center justify-center gap-2 text-sm ${item.available ? 'text-green-500': 'text-gray-500'} mb-2`}>
+                <div className={`w-2 h-2 ${item.available ? 'bg-green-500': 'bg-gray-500'} rounded-full`}></div>
+                <p>{item.available ? 'Available': 'Not Available'}</p>
               </div>
               <p className='text-gray-900 text-lg font-medium'>{item.name}</p>
               <p className='text-gray-600 text-sm'>{item.speciality}</p>
