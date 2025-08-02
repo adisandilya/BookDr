@@ -11,28 +11,35 @@ const DoctorProfile = () => {
 
   const [isEdit, setIsEdit] = useState(false)
 
-  const updateProfile = async ()=>{
+  const updateProfile = async () => {
     try {
-      const updateData={
-        addres:profileData.addresss,
-        fees:profileData.fees,
-        available:profileData.available
-      }
-
-      const {data} = await axios.post(backendUrl+'/api/doctor/update-profile', updateData, {headers:{dToken}})
-      if(data.success){
-        toast.success(data.message)
-        setIsEdit(false)
-        getProfileData()
-      }
-      else{
-        toast.error(data.message)
+      const updateData = {
+        address: {
+          line1: profileData.address.line1,
+          line2: profileData.address.line2,
+        },
+        fees: profileData.fees,
+        available: profileData.available,
+      };
+  
+      const { data } = await axios.post(
+        backendUrl + '/api/doctor/update-profile',
+        updateData,
+        { headers: { dToken } }
+      );
+  
+      if (data.success) {
+        toast.success(data.message);
+        setIsEdit(false);
+        getProfileData();
+      } else {
+        toast.error(data.message);
       }
     } catch (error) {
-      toast.error(error.message)
-      console.log(error)
+      toast.error(error.message);
+      console.log(error);
     }
-  }
+  };
 
   useEffect(()=>{
     if(dToken){

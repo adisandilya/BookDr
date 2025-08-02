@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import axios from 'axios'
-
+import {toast} from 'react-toastify'
 
 
 export const AppContext = createContext();
@@ -34,7 +34,7 @@ const AppContextProvider = (props)=>{
             if(data.success){
                 setUserData(data.userData)
             }else{
-                toast.error(error.message)
+                toast.error(data.message)
             }
         } catch (error) {
             console.log(error)

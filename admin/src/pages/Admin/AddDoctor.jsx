@@ -18,14 +18,23 @@ const AddDoctor = () => {
   const [degree, setDegree] = useState('')
   const [address1, setAddress1] = useState('')
   const [address2, setAddress2] = useState('')
+  const [loading, setLoading] = useState(false)
+
+
 
   const { backendUrl, aToken } = useContext(AdminContext)
 
   const onSubmitHandler = async (event) => {
+    if (loading) return; 
+    setLoading(true)
     event.preventDefault()
     try {
       if (!docImg) {
-        return toast.error('Image not selected')
+        if (!docImg) {
+          toast.error('Image not selected')
+          setLoading(false); // move this above return
+          return;
+        }
       }
 
       const formData = new FormData()
@@ -53,11 +62,11 @@ const AddDoctor = () => {
         setName('')        
         setPassword('')        
         setEmail('')        
-        // setAddress1('')        
-        // setAddress2('')        
-        // setDegree('')        
-        // setAbout('')       
-        // setFees('')        
+        setAddress1('')        
+        setAddress2('')        
+        setDegree('')        
+        setAbout('')       
+        setFees('')        
 
       }else{
         toast.error(data.message)
@@ -66,6 +75,7 @@ const AddDoctor = () => {
       toast.error(error.message)
       console.log(error)
     }
+    setLoading(false)
   }
 
   return (
@@ -159,7 +169,7 @@ const AddDoctor = () => {
           <textarea onChange={(e) => setAbout(e.target.value)} value={about} className='w-full px-4 pt-2 border rounded' type="text" placeholder='Write about doctor' rows={5} required></textarea>
         </div>
 
-        <button type='submit' className='bg-primary px-10 py-3 mt-4 text-white rounded-full'>Add Doctor</button>
+        <button type='submit' disabled={loading} className={`bg-primary px-10 py-3 mt-4 text-white rounded-full transition-opacity ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}>{loading ? 'Adding...' : 'Add Doctor'}</button>
 
       </div>
 

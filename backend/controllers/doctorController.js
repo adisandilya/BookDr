@@ -31,6 +31,12 @@ const doctorsList = async(req, res)=>{
 const loginDoctor = async (req, res)=>{
     try {
         const {email, password} = req.body
+        if (!email.endsWith("@bookdr.com")) {
+            return res.json({
+              success: false,
+              message: "Please Verify Your Identity",
+            });
+          }
         const doctor = await doctorModel.findOne({email})
 
         if(!doctor){

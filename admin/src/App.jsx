@@ -14,11 +14,17 @@ import { DoctorContext } from './contexts/DoctorContext';
 import DoctorDashboard from './pages/Doctor/DoctorDashboard';
 import DoctorAppointments from './pages/Doctor/DoctorAppointments';
 import DoctorProfile from './pages/Doctor/DoctorProfile';
+import { Navigate } from 'react-router-dom';
+
 
 const App = () => {
 
   const { aToken } = useContext(AdminContext)
   const {dToken} = useContext(DoctorContext)
+
+  if (aToken === undefined || dToken === undefined) {
+    return <div className="text-center mt-10">Loading...</div>;
+  }
 
   return aToken || dToken ? (
     <div className='bg-[#F8F9FD]'>
